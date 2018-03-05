@@ -1,0 +1,114 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    overflow-x: hidden;
+    color: #555;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.page {
+    height: 100vh;
+    width: 60vw;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-left: 100px;
+    line-height: 1.4;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.elevator-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.controls {
+    position: absolute;
+    top: 0;
+    width: 10vw;
+    height: 100vh;
+    z-index: 10;
+    padding: 20px;
+    background-color: #7d8182;
+    box-shadow: 0 0 13px #aaa;
+}
+
+.elevator-control {
+    position: relative;
+    list-style-type: none;
+    line-height: 48px;
+}
+
+.elevator-control > a {
+    text-transform: uppercase;
+    border-radius: 50%;
+    border: 2px solid #f8b73f;
+    background-color: #666;
+    background: radial-gradient(circle at center, #d4d4d4 0%,#878787 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color: white;
+    display: block;
+    width: 48px;
+    height: 48px;
+    line-height: 44px;
+    margin: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .1s;
+}
+
+.elevator-control.active > a {
+    background-color: #999;
+    background: radial-gradient(circle at center, #a3a3a3 0%,#525252 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    box-shadow: 0 0 7px 3px #f8b73f;
+    padding-top: 3px;
+    padding-left: -3px;
+}
+
+.elevator-doors {
+    position: absolute;
+    width: 90vw;
+    height: 100vh;
+    left: 10vw;
+}
+
+.left-door, .right-door {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: grey;
+    transition: all .2s ease-out;
+    clip-path: polygon(
+        0 0, 0 100vh, 100vw 100vh, 100vw 0,
+        0 0,
+        10% 5%, 90% 5%, 90% 50%, 10% 50%,
+        10% 5%
+    );
+}
+
+.left-door {
+    left: 0;
+    transform: translateX(-100%);
+    border-right: 2px solid #666;
+}
+.right-door {
+    right: 0;
+    transform: translateX(100%);
+    border-left: 2px solid #666;
+}
+.left-door.closed,
+.right-door.closed {
+    transform: translateX(0);
+}
